@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace BookStore
 {
@@ -49,10 +50,12 @@ namespace BookStore
                             form.Show();
                             Hide();
                         }
+                        
                     }
-                    else if (textBox2.Text == sb.Users.Where(e => e.Login == textBox2.Text).Select(e => e.Login).First())
+
+                    else if ( sb.Users.Any(a => a.Login == textBox1.Text && a.Password == textBox2.Text))
                     {
-                        Form3 form = new Form3();
+                        Form4 form = new Form4(sb.Users.FirstOrDefault(a => a.Login == textBox1.Text && a.Password == textBox2.Text).ID);
                         button3.Visible = label4.Visible = textBox3.Visible = label3.Visible = false;
                         form.Show();
                         Hide();

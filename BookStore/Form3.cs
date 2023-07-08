@@ -329,7 +329,7 @@ namespace BookStore
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-             using (StoreBookDB sb = new StoreBookDB())
+            using (StoreBookDB sb = new StoreBookDB())
             {
                 int rowIndex = 0;
                 if (dataGridView1.SelectedRows.Count > 0)
@@ -337,11 +337,11 @@ namespace BookStore
 
                     rowIndex = dataGridView1.SelectedRows[0].Index;
                 }
-                    switch (label1.Text)
+                switch (label1.Text)
                 {
                     case "Books":
                         {
-                            var record = sb.Books.FirstOrDefault(r => r.NameBook == dataGridView1.Rows[rowIndex].Cells["NameBook"].Value.ToString());  
+                            var record = sb.Books.FirstOrDefault(r => r.NameBook == dataGridView1.Rows[rowIndex].Cells["NameBook"].Value.ToString());
                             string[] str = textBox3.Text.Split(' ');
                             bool authorExists = sb.Authors.Any(a => a.LastName == str[0] && a.FirstName == str[1] && a.MiddleName == str[2]);
                             int authorId = 0;
@@ -374,13 +374,13 @@ namespace BookStore
                                 record.Pages = Int16.Parse(textBox4.Text);
                                 record.Money = float.Parse(textBox5.Text);
                                 record.ID_Authors = authorId;
-                                 
 
 
 
-                            
+
+
                                 sb.SaveChanges(); booksToolStripMenuItem_Click(sender, e); break;
-                            } 
+                            }
                             break;
                         }
 
@@ -393,8 +393,8 @@ namespace BookStore
                                 record.FirstName = textBox1.Text;
                                 record.LastName = textBox2.Text;
                                 record.MiddleName = textBox3.Text;
-                               
-                       
+
+
                                 sb.SaveChanges();
                             }
                             authorsToolStripMenuItem_Click(sender, e);
@@ -410,7 +410,7 @@ namespace BookStore
                                 record.MiddleName = textBox3.Text;
                                 record.Login = textBox4.Text;
                                 record.Password = textBox5.Text;
-                           
+
                                 sb.SaveChanges();
                             }
                             userToolStripMenuItem_Click(sender, e);
@@ -436,7 +436,7 @@ namespace BookStore
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                 
+
                 int rowIndex = dataGridView1.SelectedRows[0].Index;
                 switch (label1.Text)
                 {
@@ -461,11 +461,11 @@ namespace BookStore
                         }
                     case "Users":
                         {
-                            string[] str=dataGridView1.Rows[rowIndex].Cells["FoolName"].Value.ToString().Split(' ');
+                            string[] str = dataGridView1.Rows[rowIndex].Cells["FoolName"].Value.ToString().Split(' ');
                             textBox1.Text = str[0];
                             textBox2.Text = str[1];
                             textBox3.Text = str[2];
-                       
+
                             textBox4.Text = dataGridView1.Rows[rowIndex].Cells["Login"].Value.ToString();
                             textBox5.Text = dataGridView1.Rows[rowIndex].Cells["Password"].Value.ToString();
                             break;
@@ -475,5 +475,7 @@ namespace BookStore
 
             }
         }
+
+         
     }
 }

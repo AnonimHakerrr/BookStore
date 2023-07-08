@@ -1,8 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BookStore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,12 +24,15 @@ namespace BookStore
         public DateTime Created { get; set; }
         public int  Pages { get; set; }
         public int CoutSalery { get; set; }
+        public ICollection<UserBook> UserBooks { get; set; }
+     
         public Book()
         {
-      
+            UserBooks = new List<UserBook>();
         }
     }
- 
+
+  
     class Author
     {
         [Key]
@@ -40,27 +45,45 @@ namespace BookStore
        
         }
     }
-
-   class User
+    internal class UserBook
     {
         [Key]
         public int ID { get; set; }
-        public string LastName { get; set; }
-        public string FirstName { get; set; }
-        public string MiddleName { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
-        public string key ;
- 
 
+        public int UserID { get; set; }
+        [ForeignKey("UserID")]
+        public User User { get; set; }
+
+        public int BookID { get; set; }
+        [ForeignKey("BookID")]
+        public Book Book { get; set; }
     }
+    internal class User
+{
+    [Key]
+    public int ID { get; set; }
+    public string LastName { get; set; }
+    public string FirstName { get; set; }
+    public string MiddleName { get; set; }
+    public string Login { get; set; }
+    public string Password { get; set; }
+    public ICollection<UserBook> UserBooks { get; set; }
 
-    class StoreBookDB : DbContext
+    public User()
+    {
+        UserBooks = new List<UserBook>();
+    }
+}
+
+   
+
+class StoreBookDB : DbContext
     {
         public DbSet<Book> Books { get; set; }
         public DbSet<Author> Authors { get; set; }
+        public DbSet<UserBook> UserBooks { get; set; }
         public DbSet<User> Users { get; set; }
-
+      
 
         public StoreBookDB()
         {

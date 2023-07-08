@@ -75,7 +75,7 @@
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
             dataGridView1.Size = new Size(1110, 407);
-            dataGridView1.TabIndex = 5; 
+            dataGridView1.TabIndex = 5;
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             // 
             // menuStrip1
@@ -88,6 +88,7 @@
             menuStrip1.Size = new Size(1147, 30);
             menuStrip1.TabIndex = 12;
             menuStrip1.Text = "menuStrip1";
+    
             // 
             // fileToolStripMenuItem1
             // 
@@ -99,21 +100,21 @@
             // addToolStripMenuItem1
             // 
             addToolStripMenuItem1.Name = "addToolStripMenuItem1";
-            addToolStripMenuItem1.Size = new Size(143, 26);
+            addToolStripMenuItem1.Size = new Size(224, 26);
             addToolStripMenuItem1.Text = "add";
             addToolStripMenuItem1.Click += addToolStripMenuItem1_Click;
             // 
             // edetingToolStripMenuItem1
             // 
             edetingToolStripMenuItem1.Name = "edetingToolStripMenuItem1";
-            edetingToolStripMenuItem1.Size = new Size(143, 26);
+            edetingToolStripMenuItem1.Size = new Size(224, 26);
             edetingToolStripMenuItem1.Text = "edeting";
             edetingToolStripMenuItem1.Click += edetingToolStripMenuItem1_Click;
             // 
             // seachToolStripMenuItem
             // 
             seachToolStripMenuItem.Name = "seachToolStripMenuItem";
-            seachToolStripMenuItem.Size = new Size(143, 26);
+            seachToolStripMenuItem.Size = new Size(224, 26);
             seachToolStripMenuItem.Text = "seach";
             // 
             // datebaseToolStripMenuItem
@@ -126,21 +127,21 @@
             // booksToolStripMenuItem
             // 
             booksToolStripMenuItem.Name = "booksToolStripMenuItem";
-            booksToolStripMenuItem.Size = new Size(143, 26);
+            booksToolStripMenuItem.Size = new Size(224, 26);
             booksToolStripMenuItem.Text = "Books";
             booksToolStripMenuItem.Click += booksToolStripMenuItem_Click;
             // 
             // authorsToolStripMenuItem
             // 
             authorsToolStripMenuItem.Name = "authorsToolStripMenuItem";
-            authorsToolStripMenuItem.Size = new Size(143, 26);
+            authorsToolStripMenuItem.Size = new Size(224, 26);
             authorsToolStripMenuItem.Text = "Authors";
             authorsToolStripMenuItem.Click += authorsToolStripMenuItem_Click;
             // 
             // userToolStripMenuItem
             // 
             userToolStripMenuItem.Name = "userToolStripMenuItem";
-            userToolStripMenuItem.Size = new Size(143, 26);
+            userToolStripMenuItem.Size = new Size(224, 26);
             userToolStripMenuItem.Text = "User";
             userToolStripMenuItem.Click += userToolStripMenuItem_Click;
             // 

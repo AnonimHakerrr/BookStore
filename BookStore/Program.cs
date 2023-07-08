@@ -13,5 +13,6 @@ namespace BookStore
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
         }
+
     }
 }
