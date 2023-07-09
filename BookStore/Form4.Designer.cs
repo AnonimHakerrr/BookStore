@@ -32,12 +32,18 @@
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem1 = new ToolStripMenuItem();
             seachToolStripMenuItem = new ToolStripMenuItem();
+            authorToolStripMenuItem = new ToolStripMenuItem();
+            gerneToolStripMenuItem = new ToolStripMenuItem();
+            bookNameToolStripMenuItem = new ToolStripMenuItem();
             datebaseToolStripMenuItem = new ToolStripMenuItem();
             booksToolStripMenuItem = new ToolStripMenuItem();
             authorsToolStripMenuItem = new ToolStripMenuItem();
             buyToolStripMenuItem = new ToolStripMenuItem();
             dataGridView1 = new DataGridView();
             label1 = new Label();
+            textBox3 = new TextBox();
+            button1 = new Button();
+            label2 = new Label();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -76,9 +82,31 @@
             // 
             // seachToolStripMenuItem
             // 
+            seachToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { authorToolStripMenuItem, gerneToolStripMenuItem, bookNameToolStripMenuItem });
             seachToolStripMenuItem.Name = "seachToolStripMenuItem";
             seachToolStripMenuItem.Size = new Size(129, 26);
             seachToolStripMenuItem.Text = "seach";
+            // 
+            // authorToolStripMenuItem
+            // 
+            authorToolStripMenuItem.Name = "authorToolStripMenuItem";
+            authorToolStripMenuItem.Size = new Size(166, 26);
+            authorToolStripMenuItem.Text = "author";
+            authorToolStripMenuItem.Click += authorToolStripMenuItem_Click;
+            // 
+            // gerneToolStripMenuItem
+            // 
+            gerneToolStripMenuItem.Name = "gerneToolStripMenuItem";
+            gerneToolStripMenuItem.Size = new Size(166, 26);
+            gerneToolStripMenuItem.Text = "gerne";
+            gerneToolStripMenuItem.Click += gerneToolStripMenuItem_Click;
+            // 
+            // bookNameToolStripMenuItem
+            // 
+            bookNameToolStripMenuItem.Name = "bookNameToolStripMenuItem";
+            bookNameToolStripMenuItem.Size = new Size(166, 26);
+            bookNameToolStripMenuItem.Text = "bookName";
+            bookNameToolStripMenuItem.Click += bookNameToolStripMenuItem_Click;
             // 
             // datebaseToolStripMenuItem
             // 
@@ -90,14 +118,14 @@
             // booksToolStripMenuItem
             // 
             booksToolStripMenuItem.Name = "booksToolStripMenuItem";
-            booksToolStripMenuItem.Size = new Size(224, 26);
+            booksToolStripMenuItem.Size = new Size(143, 26);
             booksToolStripMenuItem.Text = "Books";
             booksToolStripMenuItem.Click += booksToolStripMenuItem_Click;
             // 
             // authorsToolStripMenuItem
             // 
             authorsToolStripMenuItem.Name = "authorsToolStripMenuItem";
-            authorsToolStripMenuItem.Size = new Size(224, 26);
+            authorsToolStripMenuItem.Size = new Size(143, 26);
             authorsToolStripMenuItem.Text = "Authors";
             authorsToolStripMenuItem.Click += authorsToolStripMenuItem_Click;
             // 
@@ -121,6 +149,8 @@
             dataGridView1.RowTemplate.Height = 29;
             dataGridView1.Size = new Size(1110, 407);
             dataGridView1.TabIndex = 17;
+            dataGridView1.CellClick += dataGridView1_CellClick;
+            dataGridView1.DataBindingComplete += dataGridView1_DataBindingComplete;
             // 
             // label1
             // 
@@ -133,12 +163,50 @@
             label1.TabIndex = 18;
             label1.Text = "Books";
             // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(421, 522);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(196, 27);
+            textBox3.TabIndex = 19;
+            textBox3.Visible = false;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(0, 192, 192);
+            button1.BackgroundImageLayout = ImageLayout.None;
+            button1.Font = new Font("Showcard Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.ForeColor = SystemColors.ButtonHighlight;
+            button1.Location = new Point(640, 516);
+            button1.Name = "button1";
+            button1.Size = new Size(93, 33);
+            button1.TabIndex = 20;
+            button1.Text = "Seach";
+            button1.UseVisualStyleBackColor = false;
+            button1.Visible = false;
+            button1.Click += button1_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.FlatStyle = FlatStyle.System;
+            label2.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(473, 484);
+            label2.Name = "label2";
+            label2.Size = new Size(81, 35);
+            label2.TabIndex = 21;
+            label2.Text = "Genre";
+            label2.Visible = false;
+            // 
             // Form4
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 192, 128);
             ClientSize = new Size(1217, 561);
+            Controls.Add(label2);
+            Controls.Add(button1);
+            Controls.Add(textBox3);
             Controls.Add(label1);
             Controls.Add(dataGridView1);
             Controls.Add(menuStrip1);
@@ -164,5 +232,11 @@
         private ToolStripMenuItem buyToolStripMenuItem;
         private DataGridView dataGridView1;
         private Label label1;
+        private ToolStripMenuItem authorToolStripMenuItem;
+        private ToolStripMenuItem gerneToolStripMenuItem;
+        private ToolStripMenuItem bookNameToolStripMenuItem;
+        private TextBox textBox3;
+        private Button button1;
+        private Label label2;
     }
 }

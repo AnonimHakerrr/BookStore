@@ -31,7 +31,9 @@ namespace BookStore
                                                 NameAuthors = a.FirstName + " " + a.LastName + " " + a.MiddleName,
                                                 DateCreate = b.Created,
                                                 Pages = b.Pages,
-                                                Price = b.Money
+                                                Price = b.Money,
+                                                Genre = b.Genre,
+                                                CoutSalery = b.CoutSalery
                                             }).ToList(); ButtonDeleteCreate();
             }
 
@@ -53,7 +55,8 @@ namespace BookStore
             switch (label1.Text)
             {
                 case "Books":
-                    textBox1.Visible = textBox2.Visible = textBox4.Visible = textBox3.Visible = dateTimePicker1.Visible = textBox5.Visible = button2.Visible = true;
+                    textBox1.Visible = textBox2.Visible = textBox4.Visible = textBox6.Visible =
+            textBox7.Visible = textBox3.Visible = dateTimePicker1.Visible = textBox5.Visible = button2.Visible = true;
                     break;
                 case "Authors":
                     textBox1.Visible = textBox3.Visible = textBox2.Visible = button2.Visible = true;
@@ -105,6 +108,8 @@ namespace BookStore
                                 Created = dateTimePicker1.Value.Date,
                                 Pages = Int16.Parse(textBox4.Text),
                                 Money = float.Parse(textBox5.Text),
+                                Genre = textBox6.Text,
+                                CoutSalery = Int16.Parse(textBox7.Text),
                                 ID_Authors = authorId,
                             };
 
@@ -156,6 +161,8 @@ namespace BookStore
             dateTimePicker1.Visible =
             textBox3.Visible =
             textBox5.Visible =
+                 textBox6.Visible =
+            textBox7.Visible =
             button2.Visible = false;
 
         }
@@ -290,7 +297,7 @@ namespace BookStore
 
         private void booksToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            textBox1.Visible = textBox2.Visible = textBox4.Visible = textBox3.Visible = dateTimePicker1.Visible = textBox5.Visible = button2.Visible = false;
+            textBox1.Visible = textBox2.Visible = textBox4.Visible = textBox3.Visible = dateTimePicker1.Visible = textBox5.Visible = textBox6.Visible = textBox7.Visible = button2.Visible = false;
 
             label1.Text = "Books";
             using (StoreBookDB sb = new StoreBookDB())
@@ -305,7 +312,9 @@ namespace BookStore
                                                 NameAuthors = a.FirstName + " " + a.LastName + " " + a.MiddleName,
                                                 DateCreate = b.Created,
                                                 Pages = b.Pages,
-                                                Price = b.Money
+                                                Price = b.Money,
+                                                Genre = b.Genre,
+                                                CoutSalery = b.CoutSalery,
                                             }).ToList();
             }
 
@@ -316,7 +325,7 @@ namespace BookStore
             switch (label1.Text)
             {
                 case "Books":
-                    textBox1.Visible = textBox2.Visible = textBox4.Visible = textBox3.Visible = dateTimePicker1.Visible = textBox5.Visible = button1.Visible = true;
+                    textBox1.Visible = textBox2.Visible = textBox4.Visible = textBox3.Visible = dateTimePicker1.Visible = textBox6.Visible = textBox7.Visible = textBox5.Visible = button1.Visible = true;
                     break;
                 case "Authors":
                     textBox1.Visible = textBox3.Visible = textBox2.Visible = button1.Visible = true;
@@ -373,6 +382,8 @@ namespace BookStore
                                 record.Created = dateTimePicker1.Value.Date;
                                 record.Pages = Int16.Parse(textBox4.Text);
                                 record.Money = float.Parse(textBox5.Text);
+                                record.Genre = textBox6.Text;
+                                record.CoutSalery = Int16.Parse(textBox7.Text);
                                 record.ID_Authors = authorId;
 
 
@@ -424,6 +435,8 @@ namespace BookStore
             dateTimePicker1.Visible =
             textBox3.Visible =
             textBox5.Visible =
+             textBox6.Visible =
+            textBox7.Visible =
             button1.Visible = false;
 
         }
@@ -449,6 +462,8 @@ namespace BookStore
                             dateTimePicker1.Text = dataGridView1.Rows[rowIndex].Cells["DateCreate"].Value.ToString();
                             textBox4.Text = dataGridView1.Rows[rowIndex].Cells["Pages"].Value.ToString();
                             textBox5.Text = dataGridView1.Rows[rowIndex].Cells["Price"].Value.ToString();
+                            textBox6.Text = dataGridView1.Rows[rowIndex].Cells["Genre"].Value.ToString();
+                            textBox7.Text = dataGridView1.Rows[rowIndex].Cells["CoutSalery"].Value.ToString();
                             break;
                         }
 
@@ -475,7 +490,104 @@ namespace BookStore
 
             }
         }
+        private void SeachMenu()
+        {
+            if (textBox8.Visible)
+            {
+                label2.Visible = textBox8.Visible = button4.Visible = false;
+            }
+            else
+                label2.Visible = textBox8.Visible = button4.Visible = true;
 
-         
+        }
+        private void OutputInfo(string What)
+        {
+            SeachMenu();
+            using (StoreBookDB sb = new StoreBookDB())
+            {
+                switch (What)
+                {
+                    case "Authors":
+                        {
+                            string[] str = textBox8.Text.Split(' ');
+                            dataGridView1.DataSource = sb.Books.Where(b => b.Authors.FirstName.Contains(str[1])
+                            && b.Authors.LastName.Contains(str[0])
+                           && b.Authors.MiddleName.Contains(str[2]))
+                                .Select(ub => new
+                                {
+                                    NameBook = ub.NameBook,
+                                    Publishing = ub.NamePublishing,
+                                    AuthorName = $"{ub.Authors.FirstName} {ub.Authors.LastName} {ub.Authors.MiddleName}",
+                                    Money = ub.Money,
+                                    DateCreate = ub.Created,
+                                    Pages = ub.Pages,
+                                    Price = ub.Money,
+                                    Genre = ub.Genre,
+                                }).ToList();
+
+                            break;
+                        }
+                    case "Bookname":
+                        {
+                            var newData = sb.Books.Where(b => b.NameBook.Contains(textBox8.Text)).Select(ub => new
+                            {
+                                NameBook = ub.NameBook,
+                                Publishing = ub.NamePublishing,
+                                AuthorName = $"{ub.Authors.FirstName} {ub.Authors.LastName} {ub.Authors.MiddleName}",
+                                Money = ub.Money,
+                                DateCreate = ub.Created,
+                                Pages = ub.Pages,
+                                Price = ub.Money,
+                                Genre = ub.Genre,
+                            }).ToList();
+                            dataGridView1.DataSource = newData;
+                            break;
+                        }
+                    case "Genre":
+                        {
+                            dataGridView1.DataSource = sb.Books.Where(b => b.Genre.Contains(textBox8.Text)).Select(ub => new
+                            {
+                                NameBook = ub.NameBook,
+                                Publishing = ub.NamePublishing,
+                                AuthorName = $"{ub.Authors.FirstName} {ub.Authors.LastName} {ub.Authors.MiddleName}",
+                                Money = ub.Money,
+                                DateCreate = ub.Created,
+                                Pages = ub.Pages,
+                                Price = ub.Money,
+                                Genre = ub.Genre,
+                            }).ToList(); break;
+                        }
+
+                }
+
+
+
+
+            }
+        }
+        private void authorToolStripMenuItem_Click1(object sender, EventArgs e)
+        {
+            SeachMenu();
+            label2.Text = "Authors";
+        }
+
+        private void gerneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SeachMenu();
+            label2.Text = "Genre";
+        }
+
+        private void bookNameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SeachMenu();
+            label2.Text = "Bookname";
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            OutputInfo(label2.Text);
+        }
+
+
     }
 }

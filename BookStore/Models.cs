@@ -20,7 +20,8 @@ namespace BookStore
         public int ID_Authors{ get; set; }
         [ForeignKey("ID_Authors")]
         public Author Authors { get; set; }
-        public float Money { get; set; }    
+        public float Money { get; set; }   
+        public string Genre { get; set; }
         public DateTime Created { get; set; }
         public int  Pages { get; set; }
         public int CoutSalery { get; set; }
@@ -87,6 +88,7 @@ namespace BookStore
        
         public StoreBookDB()
         {
+ 
             Database.EnsureCreated();
  
         }

@@ -35,6 +35,9 @@
             addToolStripMenuItem1 = new ToolStripMenuItem();
             edetingToolStripMenuItem1 = new ToolStripMenuItem();
             seachToolStripMenuItem = new ToolStripMenuItem();
+            authorToolStripMenuItem = new ToolStripMenuItem();
+            genreToolStripMenuItem = new ToolStripMenuItem();
+            bookNameToolStripMenuItem = new ToolStripMenuItem();
             datebaseToolStripMenuItem = new ToolStripMenuItem();
             booksToolStripMenuItem = new ToolStripMenuItem();
             authorsToolStripMenuItem = new ToolStripMenuItem();
@@ -48,6 +51,11 @@
             textBox5 = new TextBox();
             dateTimePicker1 = new DateTimePicker();
             button1 = new Button();
+            textBox6 = new TextBox();
+            textBox7 = new TextBox();
+            button4 = new Button();
+            textBox8 = new TextBox();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -88,7 +96,6 @@
             menuStrip1.Size = new Size(1147, 30);
             menuStrip1.TabIndex = 12;
             menuStrip1.Text = "menuStrip1";
-    
             // 
             // fileToolStripMenuItem1
             // 
@@ -113,9 +120,31 @@
             // 
             // seachToolStripMenuItem
             // 
+            seachToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { authorToolStripMenuItem, genreToolStripMenuItem, bookNameToolStripMenuItem });
             seachToolStripMenuItem.Name = "seachToolStripMenuItem";
             seachToolStripMenuItem.Size = new Size(224, 26);
             seachToolStripMenuItem.Text = "seach";
+            // 
+            // authorToolStripMenuItem
+            // 
+            authorToolStripMenuItem.Name = "authorToolStripMenuItem";
+            authorToolStripMenuItem.Size = new Size(224, 26);
+            authorToolStripMenuItem.Text = "author";
+            authorToolStripMenuItem.Click += authorToolStripMenuItem_Click1;
+            // 
+            // genreToolStripMenuItem
+            // 
+            genreToolStripMenuItem.Name = "genreToolStripMenuItem";
+            genreToolStripMenuItem.Size = new Size(224, 26);
+            genreToolStripMenuItem.Text = "genre";
+            genreToolStripMenuItem.Click += gerneToolStripMenuItem_Click;
+            // 
+            // bookNameToolStripMenuItem
+            // 
+            bookNameToolStripMenuItem.Name = "bookNameToolStripMenuItem";
+            bookNameToolStripMenuItem.Size = new Size(224, 26);
+            bookNameToolStripMenuItem.Text = "bookName";
+            bookNameToolStripMenuItem.Click += bookNameToolStripMenuItem_Click;
             // 
             // datebaseToolStripMenuItem
             // 
@@ -127,21 +156,21 @@
             // booksToolStripMenuItem
             // 
             booksToolStripMenuItem.Name = "booksToolStripMenuItem";
-            booksToolStripMenuItem.Size = new Size(224, 26);
+            booksToolStripMenuItem.Size = new Size(143, 26);
             booksToolStripMenuItem.Text = "Books";
             booksToolStripMenuItem.Click += booksToolStripMenuItem_Click;
             // 
             // authorsToolStripMenuItem
             // 
             authorsToolStripMenuItem.Name = "authorsToolStripMenuItem";
-            authorsToolStripMenuItem.Size = new Size(224, 26);
+            authorsToolStripMenuItem.Size = new Size(143, 26);
             authorsToolStripMenuItem.Text = "Authors";
             authorsToolStripMenuItem.Click += authorsToolStripMenuItem_Click;
             // 
             // userToolStripMenuItem
             // 
             userToolStripMenuItem.Name = "userToolStripMenuItem";
-            userToolStripMenuItem.Size = new Size(224, 26);
+            userToolStripMenuItem.Size = new Size(143, 26);
             userToolStripMenuItem.Text = "User";
             userToolStripMenuItem.Click += userToolStripMenuItem_Click;
             // 
@@ -151,7 +180,7 @@
             button2.BackgroundImageLayout = ImageLayout.None;
             button2.Font = new Font("Showcard Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             button2.ForeColor = SystemColors.ButtonHighlight;
-            button2.Location = new Point(966, 539);
+            button2.Location = new Point(525, 572);
             button2.Name = "button2";
             button2.Size = new Size(149, 39);
             button2.TabIndex = 13;
@@ -202,15 +231,15 @@
             // 
             textBox4.Location = new Point(699, 539);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(127, 27);
+            textBox4.Size = new Size(111, 27);
             textBox4.TabIndex = 18;
             textBox4.Visible = false;
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(833, 539);
+            textBox5.Location = new Point(816, 539);
             textBox5.Name = "textBox5";
-            textBox5.Size = new Size(127, 27);
+            textBox5.Size = new Size(99, 27);
             textBox5.TabIndex = 19;
             textBox5.Visible = false;
             // 
@@ -228,7 +257,7 @@
             button1.BackgroundImageLayout = ImageLayout.None;
             button1.Font = new Font("Showcard Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             button1.ForeColor = SystemColors.ButtonHighlight;
-            button1.Location = new Point(966, 539);
+            button1.Location = new Point(525, 572);
             button1.Name = "button1";
             button1.Size = new Size(149, 39);
             button1.TabIndex = 21;
@@ -237,12 +266,68 @@
             button1.Visible = false;
             button1.Click += button1_Click_1;
             // 
+            // textBox6
+            // 
+            textBox6.Location = new Point(921, 539);
+            textBox6.Name = "textBox6";
+            textBox6.Size = new Size(127, 27);
+            textBox6.TabIndex = 22;
+            textBox6.Visible = false;
+            // 
+            // textBox7
+            // 
+            textBox7.Location = new Point(1054, 539);
+            textBox7.Name = "textBox7";
+            textBox7.Size = new Size(81, 27);
+            textBox7.TabIndex = 23;
+            textBox7.Visible = false;
+            // 
+            // button4
+            // 
+            button4.BackColor = Color.FromArgb(0, 192, 192);
+            button4.BackgroundImageLayout = ImageLayout.None;
+            button4.Font = new Font("Showcard Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            button4.ForeColor = SystemColors.ButtonHighlight;
+            button4.Location = new Point(680, 555);
+            button4.Name = "button4";
+            button4.Size = new Size(149, 39);
+            button4.TabIndex = 24;
+            button4.Text = "seach";
+            button4.UseVisualStyleBackColor = false;
+            button4.Visible = false;
+            button4.Click += button12_Click;
+            // 
+            // textBox8
+            // 
+            textBox8.Location = new Point(464, 565);
+            textBox8.Name = "textBox8";
+            textBox8.Size = new Size(196, 27);
+            textBox8.TabIndex = 25;
+            textBox8.Visible = false;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.FlatStyle = FlatStyle.System;
+            label2.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(525, 512);
+            label2.Name = "label2";
+            label2.Size = new Size(81, 35);
+            label2.TabIndex = 26;
+            label2.Text = "Genre";
+            label2.Visible = false;
+            // 
             // Form3
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 192, 128);
             ClientSize = new Size(1147, 609);
+            Controls.Add(label2);
+            Controls.Add(textBox8);
+            Controls.Add(button4);
+            Controls.Add(textBox7);
+            Controls.Add(textBox6);
             Controls.Add(button1);
             Controls.Add(dateTimePicker1);
             Controls.Add(textBox5);
@@ -288,5 +373,13 @@
         private TextBox textBox5;
         private DateTimePicker dateTimePicker1;
         private Button button1;
+        private TextBox textBox6;
+        private TextBox textBox7;
+        private ToolStripMenuItem authorToolStripMenuItem;
+        private ToolStripMenuItem genreToolStripMenuItem;
+        private ToolStripMenuItem bookNameToolStripMenuItem;
+        private Button button4;
+        private TextBox textBox8;
+        private Label label2;
     }
 }
