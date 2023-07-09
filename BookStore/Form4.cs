@@ -69,7 +69,7 @@ namespace BookStore
 
                             if (user != null && bookBuy != null)
                             {
-                                var userBook = new UserBook
+                                UserBook userBook = new UserBook
                                 {
                                    Book=bookBuy,
                                    User=user
@@ -138,7 +138,7 @@ namespace BookStore
             using (StoreBookDB sb = new StoreBookDB())
             {
                 var user = sb.Users.FirstOrDefault(r => r.ID == Id_User);
-                var userBooks = sb.UserBooks.Include(ub => ub.User.ID==Id_User).Include(ub => ub.Book).ToList();
+                var userBooks = sb.UserBooks.Include(ub => ub.User.ID).Include(ub => ub.Book).ToList();
                 var data = userBooks.Select(ub => new
                 {
                     

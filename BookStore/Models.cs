@@ -75,20 +75,23 @@ namespace BookStore
     }
 }
 
-   
+ 
 
-class StoreBookDB : DbContext
+    class StoreBookDB : DbContext
     {
         public DbSet<Book> Books { get; set; }
         public DbSet<Author> Authors { get; set; }
-        public DbSet<UserBook> UserBooks { get; set; }
+       public DbSet<UserBook> UserBooks { get; set; }
         public DbSet<User> Users { get; set; }
-      
 
+       
         public StoreBookDB()
         {
             Database.EnsureCreated();
+ 
         }
+    
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-HTRTTSR\SQLEXPRESS;Initial Catalog=BookStore;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
